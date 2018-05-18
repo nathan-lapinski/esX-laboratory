@@ -1,11 +1,5 @@
 const megaManNameCreator = require('../shared/common').megaManNameCreator;
 
-// this is too cumbersome
-console.log(megaManNameCreator());
-console.log(megaManNameCreator());
-console.log(megaManNameCreator());
-console.log(megaManNameCreator());
-
 const megamanBosses = {
     [Symbol.iterator]: () => {
         return {
