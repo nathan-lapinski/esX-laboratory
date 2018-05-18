@@ -1,24 +1,12 @@
 const megaManNameCreator = require('../shared/common').megaManNameCreator;
 
 const megamanBosses = {
-    [Symbol.iterator]: () => {
-        return {
-            next: () => {
-                const doneGenerating = Math.random() > 0.85;
-                
-                if (!doneGenerating) {
-                    return {
-                        value: megaManNameCreator(),
-                        done: false
-                    };
-                } else {
-                    return { 
-                        value: undefined,
-                        done: true 
-                    };
-                }
-            }
-        };
+    [Symbol.iterator]: function* () {
+        while (true) {
+            const doneGenerating = Math.random() > 0.85;
+            if (doneGenerating) return;
+            yield megaManNameCreator();
+        }
     }
 };
 
