@@ -36,3 +36,5 @@ const customers = {
 for (let c of customers) {
     console.log(c);
 }
+
+// async
