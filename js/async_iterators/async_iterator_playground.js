@@ -1,3 +1,4 @@
+const asyncMegaManNameCreator = require('../shared/common').asyncMegaManNameCreator;
 const tables = {
     customer: {
         1 : { name: 'John' },
@@ -37,4 +38,18 @@ for (let c of customers) {
     console.log(c);
 }
 
-// async
+// async iterator. need node v10+
+async function * a() {
+    const boss = await asyncMegaManNameCreator();
+    while (true) {
+        yield boss
+    }
+}
+
+const asyncBosses = {
+    [Symbol.asyncIterator]: a
+}
+
+for await (const boss of asyncBosses) {
+    console.log('GOT ASYNC BOSS: ', boss);
+}
